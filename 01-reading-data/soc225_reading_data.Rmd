@@ -56,7 +56,7 @@ library(tidyverse)
 
 ## 3: Importing data
 
-To use data inside R, we first have to import, or *read*, that data into our environment.
+To use data inside R, we first have to import, or *read*, that data into our environment and save it to an object.
 
 ```{r}
 airbnb_data <- read_csv("data/seattle_airbnb.csv")
@@ -77,7 +77,7 @@ You can print the data frame to the console by typing the name of the object. Ou
 
 **Question 4.1 Go ahead and type that into the console.**
 
-You can also look at the entire data set using RStudio's built-in viewer. To use that, we use the function 'view().' We can run that command from the console, or from a code chunk like the one below: 
+You can also look at the entire data set using RStudio's built-in viewer. To use that, we use the function 'View().' We can run that command from the console, or from a code chunk like the one below: 
 
 **Question 4.2 Follow the instructions in the code block and run it**
 

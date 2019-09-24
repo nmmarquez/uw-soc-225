@@ -1,7 +1,7 @@
 ---
 title: "How to install R and RStudio"
 subtitle: "Soc 225: Data & Society"
-author: "Connor Gilroy"
+author: "Connor Gilroy, Hannah Lee, Neal Marquez"
 date: "`r Sys.Date()`"
 output: 
   html_document:
@@ -14,7 +14,17 @@ output:
 
 2. **R has a vibrant community.** Many people use R for data science, and they've created tools, written tutorials, and answered almost any questions you might have online. Using R makes you part of this community. 
 
-3. **R packages can do whatever you want.** R's strength is its ecosystem of packages. These extensions of R, developed by the community, provide tools for any programming or data analysis problem imaginable. You aren't confined to the built-in capacities of the program. 
+3. **R packages can do whatever you want.** `R`'s strength is its ecosystem of packages. These extensions of `R`, developed by the community, provide tools for any programming or data analysis problem imaginable. You aren't confined to the built-in capacities of the program. 
+
+# What R aint
+
+1. `R` is not Rstudio. Rstudio is an integrated development environment (IDE) that helps one write `R` code more efficiently. For this class we will be using Rstudio but do not confuse the two! Many times we will want to be able to use `R` without Rstudio.
+
+2. `R` is not Rmarkdown. Rmarkdown is an extension of markdown which lets you run `R` code "snippets" within a markdown document to be transformed into another document such as pdf or html. Rmarkdown is great for making documents to turn into professors, advisors, and share your findings with others, however, 90% of the time in research using rscripts is favored.
+
+4. `R` is not an Rscript. An Rscript is a set of "instructions" that are passed to R and executed. Whatever is defined in the Rscript should be saved for inspection later as an Rscript doesnot prduce anything inherintely unlike Rmarkdown. We will not be using Rscript for this class or referencing Rscript in any future lab sections but it is good to know if you do encounter it in the future.
+
+3. `R` is not the `tidyverse`. The `tidyverse` is a collection of ideas and packages championed by Hadley Wickham. They often simplify the coding process and help new users become data wranglers quickly, however, these packages are not the entirety of `R`. They will be used for the majority of this class. Common tidyverse packages include `dplyr`, `ggplot2`, and `tidyr`.
 
 # Install R
 
@@ -22,13 +32,15 @@ R is a programming language, originally designed for statistics. It's one of the
 
 To install R, go to this website and click the appropriate link for your computer's operating system: https://cloud.r-project.org/
 
-I'd recommend the most recent version of R, which is 3.5.1. You'll want to update your R version occasionally. 
+I'd recommend the most recent version of R, which is 3.6.1. You'll want to update your R version occasionally. 
 
 # Install RStudio
 
 RStudio is a convenient environment or interface for using R. RStudio is also free to use, and makes using R much easier and more pleasant. 
 
 Download the desktop version of RStudio for your laptop using the appropriate Installer here: https://www.rstudio.com/products/rstudio/download/#download
+
+# Quick Notes on unzipping files from Canvas
 
 # Try it out
 

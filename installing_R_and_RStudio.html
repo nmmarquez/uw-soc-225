@@ -7,11 +7,12 @@
 <meta charset="utf-8" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
-<meta name="author" content="Connor Gilroy" />
+<meta name="author" content="Connor Gilroy, Hannah Lee, Neal Marquez" />
 
-<meta name="date" content="2018-09-20" />
+<meta name="date" content="2019-09-24" />
 
 <title>How to install R and RStudio</title>
 
@@ -256,9 +257,7 @@ h6 {
 </style>
 
 
-</head>
 
-<body>
 
 <style type="text/css">
 .main-container {
@@ -272,7 +271,6 @@ code {
 }
 img {
   max-width:100%;
-  height: auto;
 }
 .tabbed-pane {
   padding-top: 12px;
@@ -283,22 +281,80 @@ img {
 button.code-folding-btn:focus {
   outline: none;
 }
+summary {
+  display: list-item;
+}
 </style>
 
 
 
-<div class="container-fluid main-container">
-
 <!-- tabsets -->
-<script>
-$(document).ready(function () {
-  window.buildTabsets("TOC");
-});
-</script>
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
 
 <!-- code folding -->
 
 
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
 
 
 
@@ -308,15 +364,16 @@ $(document).ready(function () {
 
 
 <h1 class="title toc-ignore">How to install R and RStudio</h1>
-<h3 class="subtitle"><em>Soc 225: Data &amp; Society</em></h3>
-<h4 class="author"><em>Connor Gilroy</em></h4>
-<h4 class="date"><em>2018-09-20</em></h4>
+<h3 class="subtitle">Soc 225: Data &amp; Society</h3>
+<h4 class="author">Connor Gilroy, Hannah Lee, Neal Marquez</h4>
+<h4 class="date">2019-09-24</h4>
 
 </div>
 
 <div id="TOC">
 <ul>
 <li><a href="#why">Why?</a></li>
+<li><a href="#what-r-aint">What R aint</a></li>
 <li><a href="#install-r">Install R</a></li>
 <li><a href="#install-rstudio">Install RStudio</a></li>
 <li><a href="#try-it-out">Try it out</a></li>
@@ -328,14 +385,22 @@ $(document).ready(function () {
 <ol style="list-style-type: decimal">
 <li><p><strong>R is free and open source.</strong> You don’t have to pay anything to download and use it, and you can keep using it after this class and after you graduate.</p></li>
 <li><p><strong>R has a vibrant community.</strong> Many people use R for data science, and they’ve created tools, written tutorials, and answered almost any questions you might have online. Using R makes you part of this community.</p></li>
-<li><p><strong>R packages can do whatever you want.</strong> R’s strength is its ecosystem of packages. These extensions of R, developed by the community, provide tools for any programming or data analysis problem imaginable. You aren’t confined to the built-in capacities of the program.</p></li>
+<li><p><strong>R packages can do whatever you want.</strong> <code>R</code>’s strength is its ecosystem of packages. These extensions of <code>R</code>, developed by the community, provide tools for any programming or data analysis problem imaginable. You aren’t confined to the built-in capacities of the program.</p></li>
+</ol>
+</div>
+<div id="what-r-aint" class="section level1">
+<h1>What R aint</h1>
+<ol style="list-style-type: decimal">
+<li><p><code>R</code> is not Rstudio. Rstudio is an integrated development environment (IDE) that helps one write <code>R</code> code more efficiently. For this class we will be using Rstudio but do not confuse the two! Many times we will want to be able to use <code>R</code> without Rstudio.</p></li>
+<li><p><code>R</code> is not Rmarkdown. Rmarkdown is an extension of markdown which lets you run <code>R</code> code “snippets” within a markdown document to be transformed into another document such as pdf or html.</p></li>
+<li><p><code>R</code> is not the <code>tidyverse</code>. The <code>tidyverse</code> is a collection of ideas and packages championed by Hadley Wickham. They often simplify the coding process and help new users become data wranglers quickly, however, these packages are not the entirety of <code>R</code>. They will be used for the majority of this class. Common tidyverse packages include <code>dplyr</code>, <code>ggplot2</code>, and <code>tidyr</code>.</p></li>
 </ol>
 </div>
 <div id="install-r" class="section level1">
 <h1>Install R</h1>
 <p>R is a programming language, originally designed for statistics. It’s one of the two most common languages for data science.</p>
 <p>To install R, go to this website and click the appropriate link for your computer’s operating system: <a href="https://cloud.r-project.org/" class="uri">https://cloud.r-project.org/</a></p>
-<p>I’d recommend the most recent version of R, which is 3.5.1. You’ll want to update your R version occasionally.</p>
+<p>I’d recommend the most recent version of R, which is 3.6.1. You’ll want to update your R version occasionally.</p>
 </div>
 <div id="install-rstudio" class="section level1">
 <h1>Install RStudio</h1>
@@ -364,6 +429,23 @@ $(document).ready(function () {
 
 
 </script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
 <script>
