@@ -44,4 +44,4 @@ Download the desktop version of RStudio for your laptop using the appropriate In
 
 # Try it out
 
-Open RStudio and test out your R setup. Start by installing the tidyverse (`install.packages("tidyverse")`) and loading it (`library(tidyverse)`). Let me know if you have questions!
+Open RStudio and test out your R setup. Start by installing the tidyverse (`install.packages("tidyverse")`) and loading it (`library(tidyverse)`). Let me know if you have questions! If you get through that try to knit this document into an html page.  
