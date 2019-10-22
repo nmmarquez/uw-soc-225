@@ -12,6 +12,7 @@ output:
 
 - Add color to our visualizations
 - Add facets to our visualizations
+- Inspect our vizulizations in greater detail
 - Make visualizations using maps
 - Control color output using palettes
 
@@ -21,7 +22,7 @@ For the first half of this lab, we'll use the `gapminder` data set. This example
 
 For the second half, we'll use the Seattle Airbnb listings from Inside Airbnb.
 
-**Question 0.1: Use the console to install the package 'gapminder' package, load that package and the tidyverse package.**
+**Question 0.1: Use the console to install the packages 'gapminder' and `plotly`, load those packages and the tidyverse package.**
 
 ```{r}
 
@@ -78,6 +79,24 @@ p + # taking our old graph, the '+' lets us add to it
 
 ```
 
+## Inspection and ggplotly
+
+Looking at the general shape of the scatter plot is a good way to see patterns in the data however we are also often interested in individual outliers and how they skew the data. Plotly is a great tool to enhance a static ggplot and examine the data in more detail.
+
+```{r}
+p2 <- gapminder %>% # I can use the assignment operator to save a plot!
+  ggplot(aes(x = gdpPercap, y = lifeExp, 
+             text = paste0("Country: ", country, "\nYear: ", year))) + 
+  geom_point() +
+  scale_x_log10()
+
+p2
+```
+
+```{r}
+ggplotly(p2)
+```
+
 **Question 1.5 what do you think accounts for the distinctive shape of your scatterplot?**
 
 ## Colors
@@ -106,7 +125,7 @@ ggplot(gapminder, aes(x = gdpPercap, y = lifeExp, color = log(pop))) +
 
 ```
 
-**Question 1.7 Remake plot q by choosing a categorical variable to add colors that explain the interesting shapes**
+**Question 1.7 Remake plot q by choosing a categorical variable to add colors that explain the interesting shapes. Save the additions to a new variable of your choosing and view it with plotly.**
 
 ```{r}
 
@@ -174,6 +193,27 @@ Instead of looking at the relationship between life expectancy and GDP, now we'l
 
 # 4: Maps
 
+## Static maps
+
+Creating static maps in R is not something that we are going to go over in much detail but it is a rewarding vary doable task. The easiest way to build static maps in R is to start with shape files and load in those shape files using the `sf` (simple features) package. Some packages within R already have built in shapefile sf objects in them and we leverage that utility in the example below.
+
+```{r}
+# library(rnaturalearth)
+# library(rnaturalearthdata)
+# library(sf)
+# # extract world data
+# world <- ne_countries(scale = "medium", returnclass = "sf")
+# 
+# gapminder %>%
+#   filter(year == 2007) %>%
+#   rename(geounit = country) %>%
+#   {right_join(world, ., by="geounit")} %>%
+#   ggplot() +
+#   geom_sf(aes(fill=lifeExp))
+```
+
+## Leaflet
+
 You can create maps in R using latitude and longitude data. This uses a new package called `leaflet` (https://rstudio.github.io/leaflet/), which you'll need to install in the console. 
 
 The Inside Airbnb data has latitudes and longitudes for each listing, so we'll use that.
@@ -220,7 +260,7 @@ example_data <-
 room_type_pal <- colorFactor("Set1", example_data$room_type) 
 
 leaflet(example_data) %>% # make a leaflet plot with our example data
-  addTiles() %>% # add the map tiles
+  addProviderTiles(providers$CartoDB.DarkMatter) %>% # add the map tiles
   addCircles(popup = ~name, # add circles which we can click to see the names
              color = ~room_type_pal(room_type)) %>% # color the circles with our palette
   addLegend(pal = room_type_pal, values = ~room_type) # add a legend so we know what's what
@@ -330,3 +370,26 @@ All of the subsequent code can be written in the code chunk below.
 1.2 <int> and <dbl> are number columns, <fct> are 'factor' columns
 
 4.1 remember that you can use unique(some_data$some_column) to list all of the unique values of some column in some data frame
+
+## Just for fun
+
+We have talked about how each aesthetic maps a variable to a dimension in the ggplot universe x,y,color, size etc. another dimesion that we havent talked about that you can imagine is the time dimension. While creating this is a bit tricky the people behing the package gganimate have been trying to do exactly this and you can see a working version of their package below if you uncomment the code.
+
+```{r}
+#install.packages("gganimate")
+#install.packages("gifski")
+# library(gganimate)
+# pg <- ggplot(gapminder, aes(gdpPercap, lifeExp, size = pop, colour = country)) +
+#   geom_point(alpha = 0.7) +
+#   scale_colour_manual(values = country_colors) +
+#   scale_size(range = c(2, 12)) +
+#   scale_x_log10() +
+#   facet_wrap(~continent) +
+#   theme(legend.position = 'none') +
+#   labs(title = 'Year: {frame_time}', x = 'GDP per capita', y = 'life expectancy') +
+#   transition_time(year) +
+#   ease_aes('linear')
+# 
+# animate(pg, 100, 10)
+```
+
